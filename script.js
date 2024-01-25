@@ -1,23 +1,15 @@
 function calculateAge() {
-  // Get the input values (day, month, year)
-  var day = parseInt(document.getElementById("day").value);
-  var month = parseInt(document.getElementById("month").value);
-  var year = parseInt(document.getElementById("year").value);
+  // Get the input value (date of birth)
+  var dob = document.getElementById("dob").value;
 
-  // Check if the inputs are valid
-  if (isNaN(day) || isNaN(month) || isNaN(year)) {
-    alert("Please enter valid day, month, and year values.");
-    return;
-  }
-
-  // Check if the date is valid
-  if (day < 1 || day > 31 || month < 1 || month > 12 || year < 1900) {
-    alert("Please enter a valid date.");
+  // Check if a date is selected
+  if (!dob) {
+    alert("Please select a valid date of birth.");
     return;
   }
 
   // Calculate age
-  var birthDate = new Date(year, month - 1, day);
+  var birthDate = new Date(dob);
   var currentDate = new Date();
 
   var ageInMilliseconds = currentDate - birthDate;
@@ -43,6 +35,6 @@ function calculateAge() {
 
   // Display the result
   var resultElement = document.getElementById("result");
-  resultElement.innerHTML = "Your age is " + ageInYears + " years, " + ageInMonths + " months, and " + ageInDays + " days.";
+  resultElement.innerHTML = "Dob je " + ageInYears + " godina, " + ageInMonths + " mjeseci, i " + ageInDays + " dana.";
 }
 
