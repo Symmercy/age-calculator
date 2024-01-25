@@ -1,15 +1,23 @@
 function calculateAge() {
-  // Get the input value (date of birth)
-  var dob = document.getElementById("dob").value;
+  // Get the input values (day, month, year)
+  var day = parseInt(document.getElementById("day").value);
+  var month = parseInt(document.getElementById("month").value);
+  var year = parseInt(document.getElementById("year").value);
 
-  // Check if a date is selected
-  if (!dob) {
-    alert("Please select a valid date of birth.");
+  // Check if the inputs are valid
+  if (isNaN(day) || isNaN(month) || isNaN(year)) {
+    alert("Please enter valid day, month, and year values.");
+    return;
+  }
+
+  // Check if the date is valid
+  if (day < 1 || day > 31 || month < 1 || month > 12 || year < 1900) {
+    alert("Please enter a valid date.");
     return;
   }
 
   // Calculate age
-  var birthDate = new Date(dob);
+  var birthDate = new Date(year, month - 1, day);
   var currentDate = new Date();
 
   var ageInMilliseconds = currentDate - birthDate;
